@@ -12,12 +12,14 @@ start.addEventListener("touchend", function foo() {
       container.style.transform = "rotate(" + progress * 360 + "deg)";
     },
   });
+  clearInterval(interval);
+  time = 0;
   container.innerHTML = "";
   let data = generateData();
   shuffle(data);
   checkRightPosition(data);
   createBones(data);
-  firstMove = false;
+  firstMove = true;
 });
 
 function gameOverPosition(array) {
