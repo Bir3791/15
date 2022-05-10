@@ -16,22 +16,22 @@ start.addEventListener("touchend", function foo() {
   time = 0;
   container.innerHTML = "";
   let data = generateData();
-  shuffle(data);
+  // shuffle(data);
   checkRightPosition(data);
   createBones(data);
   firstMove = true;
 });
 
-function gameOverPosition(array) {
+function gameOverPosition(data) {
 
   let countRight = 0;
- array.forEach((item, i) => {
-   let local = array.indexOf(item) === (array[i].name - 1);
+ data.forEach((item, i) => {
+   let local = data.indexOf(item) === (data[i].name - 1);
    if (local) {
      countRight++
    } else { countRight = 0; }
    if (countRight === 15) {
-     gameOver();
+      gameOver();
    }else{return}
  });
 }
@@ -39,7 +39,6 @@ function gameOverPosition(array) {
 
 function timeStart() {
   time++;
-  console.log(time);
 }
 
 function gameOver() {

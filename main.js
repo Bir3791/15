@@ -22,9 +22,11 @@ function generateData() {
 }
 
 //рандомно розмішуєм
-function shuffle(array) {
-  array.sort(() => Math.random() - 0.5);
+function shuffle(data) {
+  data.sort(() => Math.random() - 0.5);
 }
+
+
 //расклад лойда - перевіряємо можливість складання
 function checkRightPosition(array) {
   let count;
@@ -61,6 +63,7 @@ function checkRightPosition(array) {
 }
 
 function createBones(array) {
+  
   for (let index = 0; index < array.length; index++) {
     if (array[index].name) {
       let bone = document.createElement("div");
@@ -73,6 +76,7 @@ function createBones(array) {
       bone.setAttribute("index", index);
       array[index].el = bone;
       drawBones(bone, array);
+      
     }
   }
 
@@ -95,7 +99,7 @@ function move(currentIndex, array) {
     firstMove = false;
   } else {
   }
-
+  debugger
   const bone = array[currentIndex];
   let emptyIndex;
   array.forEach((item, i) => {
@@ -104,10 +108,10 @@ function move(currentIndex, array) {
     }
   });
   const emptyBone = getEmptyBone(array, currentIndex);
+
   if (!emptyBone) {
     return;
   }
-
   let oldEmptyBonePositionLeft = emptyIndex % 4;
   let oldEmptyBonePositionTop = (emptyIndex - oldEmptyBonePositionLeft) / 4;
 
