@@ -1,5 +1,6 @@
 const start = document.querySelector('.start');
-let data = generateData();
+// let data = generateData();
+generateData();
 createBones(filds);
 
 start.addEventListener("touchend", function foo() {
@@ -16,10 +17,10 @@ start.addEventListener("touchend", function foo() {
   clearInterval(interval);
   time = 0;
   container.innerHTML = "";
-  let data = generateData();
-  // shuffle(data);
-  checkRightPosition(data);
-  createBones(data);
+  generateData();
+  shuffle(filds);
+  checkRightPosition(filds);
+  createBones(filds);
   firstMove = true;
 });
 

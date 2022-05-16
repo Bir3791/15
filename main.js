@@ -32,30 +32,36 @@ function shuffle(data) {
 function checkRightPosition(array) {
   let count;
   //вираховуємо позтцію вільної клітинки
+  
   array.forEach((item) => {
     if (item.name === null) {
-      if (array.indexOf(item) >= 0 && array.indexOf(item) < 4) {
+      if (array.indexOf(item) >= 0 && array.indexOf(item) <= 3) {
         count = 1;
       }
-      else if (array.indexOf(item) >= 4 && array.indexOf(item) < 7) {
+      else if (array.indexOf(item) >= 4 && array.indexOf(item) <= 7) {
         count = 2;
       }
-      else if (array.indexOf(item) >= 7 && array.indexOf(item) < 11) {
+      else if (array.indexOf(item) >= 8 && array.indexOf(item) <= 11) {
         count = 3;
       }
-      else if (array.indexOf(item) >= 11 && array.indexOf(item) < 15) {
+      else if (array.indexOf(item) >= 12 && array.indexOf(item) <= 15) {
         count = 4;
       }
     }
+    // console.log(count)
   });
-  for (let index = 0; index < array.length; index++) {
-    for (let i = index + 1; i < array.length; i++) {
-      if (array[index].name > array[i].name) {
-        count++;
+
+  for (let indexSerch = 0; indexSerch < array.length; indexSerch++) {
+    if (array[indexSerch].name !== null) {
+      for (let i = indexSerch + 1; i < array.length; i++) {
+        if (array[i].name !== null) {
+          array[indexSerch].name > array[i].name ? count++ : console.log()          
+         }
       }
     }
+    continue;    
   }
-  if (Number.isInteger(count / 2) == false) {
+  if (Number.isInteger(count / 2) === false) {
     shuffle(array);
     checkRightPosition(array);
   } else {
