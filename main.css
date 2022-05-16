@@ -1,7 +1,19 @@
 body{
     font-family: 'Orbitron', sans-serif;
-    background-color: aqua;
+    background-color: rgb(245, 247, 159);
+    animation: changes 5s infinite linear;
 }
+
+@keyframes changes {
+      0%{    background-color: rgb(245, 247, 159);
+} 50%{
+    background-color: rgb(244, 247, 94);
+
+}100%{
+        background-color: rgb(245, 247, 159);
+
+}
+    }
 
 .title-container{
   background-color: rgb(34, 13, 224);
@@ -50,10 +62,19 @@ body{
     width: 320px;
     height: 320px;
     position: relative;
-    
-    /* transform: rotate(15deg); */
-    
+    background-color: rgb(29, 29, 121);
+     animation: changesContainer 5s infinite linear;
 }
+
+@keyframes changesContainer {
+      0%{        background-color: rgb(29, 29, 121);
+
+} 50%{
+        background-color: rgb(8, 8, 228);
+}100%{
+            background-color: rgb(29, 29, 121);
+}
+    }
 
 .index{
     /* width: 100px; */
@@ -70,6 +91,11 @@ body{
     justify-content: center;
     align-items: center;
     transition: 0.05s;
+    -moz-user-select: -moz-none;
+-o-user-select: none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none
     /* transform: rotate(15deg); */
 }
 
@@ -101,3 +127,4 @@ body{
   align-items: center;
   font-size: 45px;
 }
+

@@ -4,6 +4,7 @@ let gameClick = 0;
 let firstMove = true;
 let time = 0;
 let interval;
+let filds;
 
 
 function generateData() {
@@ -18,7 +19,7 @@ function generateData() {
     name: null,
     el: null,
   });
-  return result;
+  return filds = result;
 }
 
 //рандомно розмішуєм
@@ -79,14 +80,15 @@ function createBones(array) {
       
     }
   }
+  container.addEventListener("touchend", handleClick)
+}
 
-  container.addEventListener("touchend", (e) => {
-    const boneEl = e.target.closest(".index");
+function handleClick(e) {
+  const boneEl = e.target.closest(".index");
     if (boneEl) {
       const index = +boneEl.getAttribute("index");
-      move(index, array);
-    }
-  });
+      move(index, filds);
+  }
 }
 
 function drawBones(el) {
@@ -99,7 +101,6 @@ function move(currentIndex, array) {
     firstMove = false;
   } else {
   }
-  debugger
   const bone = array[currentIndex];
   let emptyIndex;
   array.forEach((item, i) => {

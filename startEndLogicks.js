@@ -1,6 +1,6 @@
 const start = document.querySelector('.start');
 let data = generateData();
-createBones(data);
+createBones(filds);
 
 start.addEventListener("touchend", function foo() {
   animate({
@@ -12,6 +12,7 @@ start.addEventListener("touchend", function foo() {
       container.style.transform = "rotate(" + progress * 360 + "deg)";
     },
   });
+  container.removeEventListener("touchend", handleClick);
   clearInterval(interval);
   time = 0;
   container.innerHTML = "";
