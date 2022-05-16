@@ -45,14 +45,18 @@ function timeStart() {
 
 function gameOver() {
   let gameOver = document.createElement("div");
+  
   gameOver.innerHTML = `GAME OVER <br>your clicks<br>${gameClick}<br>your time<br>${time}sec<br>`;
   gameOver.classList.add("result");
   container.before(gameOver);
+  timeDisplay.innerHTML = `${time}sec`;
+  scoreDisplay.innerHTML = `${gameClick}click`;
   gameClick = 0;
   time = 0;
   clearInterval(interval);
   firstMove = true;
   gameOver.addEventListener("touchend", function () {
     gameOver.remove();
-  } )
+  })
+  
 }

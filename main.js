@@ -5,6 +5,8 @@ let firstMove = true;
 let time = 0;
 let interval;
 let filds;
+let scoreDisplay = document.querySelector(".score");
+let timeDisplay = document.querySelector(".time");
 
 
 function generateData() {
@@ -146,3 +148,4 @@ function getEmptyBone(array, currentIndex) {
     return array[currentIndex + 4];
   }
 }
+

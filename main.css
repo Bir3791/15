@@ -128,3 +128,17 @@ user-select: none
   font-size: 45px;
 }
 
+.container{
+  font-size: 1.5rem;
+}
+
+.score{
+ position: absolute;
+  top: 0;
+  right: 3%;
+}
+
+.time{
+  position: absolute;
+  top: 0;
+}
