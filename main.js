@@ -109,6 +109,7 @@ function move(currentIndex, array) {
     firstMove = false;
   } else {
   }
+  sound();
   const bone = array[currentIndex];
   let emptyIndex;
   array.forEach((item, i) => {
@@ -149,3 +150,17 @@ function getEmptyBone(array, currentIndex) {
   }
 }
 
+function sound() {
+  let sound = document.querySelector(".audio");
+  let numberSound;
+  let random = Math.random();
+  if (random > 0.5) {
+    numberSound = 1;
+  } else {
+    numberSound = 2;
+  }
+  console.log(numberSound);
+  sound.innerHTML = `<audio src="audio/click${numberSound}.wav" class="audio"></audio>`;
+  sound.volume = 0.2;
+  sound.play();
+}

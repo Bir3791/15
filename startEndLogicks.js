@@ -58,5 +58,4 @@ function gameOver() {
   gameOver.addEventListener("touchend", function () {
     gameOver.remove();
   })
-  
 }
