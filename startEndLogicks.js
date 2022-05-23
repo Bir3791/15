@@ -59,3 +59,28 @@ function gameOver() {
     gameOver.remove();
   })
 }
+
+function handleTouchMove(evt) {
+    if ( ! xDown || ! yDown ) {
+        return;
+    }
+
+    var xUp = evt.touches[0].clientX;                                    
+    var yUp = evt.touches[0].clientY;
+
+    var xDiff = xDown - xUp;
+    var yDiff = yDown - yUp;
+                                                                         
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+        if ( xDiff > 0 ) {
+        } else {
+        }                       
+    } else {
+        if ( yDiff > 0 ) {
+        } else { 
+        }                                                                 
+    }
+    /* reset values */
+    xDown = null;
+    yDown = null;                                             
+};
