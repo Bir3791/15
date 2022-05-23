@@ -3,6 +3,8 @@ body{
     background-color: rgb(245, 247, 159);
     animation: changes 5s infinite linear;
     overflow:hidden;
+    touch-action: none;
+    
 }
 
 @keyframes changes {
