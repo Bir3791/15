@@ -1,24 +1,24 @@
-body{
-    font-family: 'Orbitron', sans-serif;
-    background-color: rgb(245, 247, 159);
-    animation: changes 5s infinite linear;
-    overflow:hidden;
-    touch-action: none;
-    
+body {
+  font-family: "Orbitron", sans-serif;
+  background-color: rgb(245, 247, 159);
+  animation: changes 5s infinite linear;
+  overflow: hidden;
+  touch-action: none;
 }
 
 @keyframes changes {
-      0%{    background-color: rgb(245, 247, 159);
-} 50%{
+  0% {
+    background-color: rgb(245, 247, 159);
+  }
+  50% {
     background-color: rgb(244, 247, 94);
-
-}100%{
-        background-color: rgb(245, 247, 159);
-
+  }
+  100% {
+    background-color: rgb(245, 247, 159);
+  }
 }
-    }
 
-.title-container{
+.title-container {
   background-color: rgb(34, 13, 224);
   position: absolute;
   width: 100%;
@@ -57,52 +57,54 @@ body{
   }
 }
 
-.container-for-bones{
-    margin: auto;
-    margin-top: 50%;
-    border: 2px solid black;
-    border-radius: 5px;
-    width: 320px;
-    height: 320px;
-    position: relative;
-    background-color: rgb(29, 29, 121);
-     animation: changesContainer 5s infinite linear;
+.container-for-bones {
+  margin: auto;
+  margin-top: 50%;
+  border: 2px solid black;
+  border-radius: 5px;
+  width: 320px;
+  height: 320px;
+  position: relative;
+  background-color: rgb(29, 29, 121);
+  animation: changesContainer 5s infinite linear;
 }
 
 @keyframes changesContainer {
-      0%{        background-color: rgb(29, 29, 121);
-
-} 50%{
-        background-color: rgb(8, 8, 228);
-}100%{
-            background-color: rgb(29, 29, 121);
-}
-    }
-
-.index{
-    /* width: 100px; */
-    position: absolute;
-    box-sizing: border-box;
-    font-size: 40px;
-    background-color: azure;
-    height: 80px;
-    width: 80px;
-    border: 1px solid black;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: 0.05s;
-    -moz-user-select: -moz-none;
--o-user-select: none;
--khtml-user-select: none;
--webkit-user-select: none;
-user-select: none
-    /* transform: rotate(15deg); */
+  0% {
+    background-color: rgb(29, 29, 121);
+  }
+  50% {
+    background-color: rgb(8, 8, 228);
+  }
+  100% {
+    background-color: rgb(29, 29, 121);
+  }
 }
 
-.start{
+.index {
+  /* width: 100px; */
+  position: absolute;
+  box-sizing: border-box;
+  font-size: 40px;
+  background-color: azure;
+  height: 80px;
+  width: 80px;
+  border: 1px solid black;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.05s;
+  -moz-user-select: -moz-none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* transform: rotate(15deg); */
+}
+
+.start {
   display: block;
   text-decoration: overline red;
   text-transform: uppercase;
@@ -113,7 +115,7 @@ user-select: none
   padding: auto;
 }
 
-.result{
+.result {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -121,8 +123,8 @@ user-select: none
   background-color: bisque;
   border-radius: 5px;
   border: 2px solid gray;
-  height: 90%;
-  width: 90%;
+  height: 96%;
+  width: 92%;
   z-index: 2;
   opacity: 90%;
   display: flex;
@@ -131,17 +133,17 @@ user-select: none
   font-size: 45px;
 }
 
-.container{
+.container {
   font-size: 1.5rem;
 }
 
-.score{
- position: absolute;
+.score {
+  position: absolute;
   top: 0;
   right: 3%;
 }
 
-.time{
+.time {
   position: absolute;
   top: 0;
 }

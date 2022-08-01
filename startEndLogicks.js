@@ -1,4 +1,4 @@
-const start = document.querySelector('.start');
+const start = document.querySelector(".start");
 // let data = generateData();
 generateData();
 createBones(filds);
@@ -25,19 +25,21 @@ start.addEventListener("touchend", function foo() {
 });
 
 function gameOverPosition(data) {
-
   let countRight = 0;
- data.forEach((item, i) => {
-   let local = data.indexOf(item) === (data[i].name - 1);
-   if (local) {
-     countRight++
-   } else { countRight = 0; }
-   if (countRight === 15) {
+  data.forEach((item, i) => {
+    let local = data.indexOf(item) === data[i].name - 1;
+    if (local) {
+      countRight++;
+    } else {
+      countRight = 0;
+    }
+    if (countRight === 15) {
       gameOver();
-   }else{return}
- });
+    } else {
+      return;
+    }
+  });
 }
-
 
 function timeStart() {
   time++;
@@ -45,7 +47,7 @@ function timeStart() {
 
 function gameOver() {
   let gameOver = document.createElement("div");
-  
+
   gameOver.innerHTML = `GAME OVER <br>your clicks<br>${gameClick}<br>your time<br>${time}sec<br>`;
   gameOver.classList.add("result");
   container.before(gameOver);
@@ -54,33 +56,35 @@ function gameOver() {
   gameClick = 0;
   time = 0;
   clearInterval(interval);
+  shufflePos = false;
   firstMove = true;
   gameOver.addEventListener("touchend", function () {
     gameOver.remove();
-  })
+  });
 }
 
 function handleTouchMove(evt) {
-    if ( ! xDown || ! yDown ) {
-        return;
-    }
+  if (!xDown || !yDown) {
+    return;
+  }
 
-    var xUp = evt.touches[0].clientX;                                    
-    var yUp = evt.touches[0].clientY;
+  var xUp = evt.touches[0].clientX;
+  var yUp = evt.touches[0].clientY;
 
-    var xDiff = xDown - xUp;
-    var yDiff = yDown - yUp;
-                                                                         
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
-        if ( xDiff > 0 ) {
-        } else {
-        }                       
+  var xDiff = xDown - xUp;
+  var yDiff = yDown - yUp;
+
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    /*most significant*/
+    if (xDiff > 0) {
     } else {
-        if ( yDiff > 0 ) {
-        } else { 
-        }                                                                 
     }
-    /* reset values */
-    xDown = null;
-    yDown = null;                                             
-};
+  } else {
+    if (yDiff > 0) {
+    } else {
+    }
+  }
+  /* reset values */
+  xDown = null;
+  yDown = null;
+}

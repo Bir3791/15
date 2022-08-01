@@ -7,7 +7,7 @@ let interval;
 let filds;
 let scoreDisplay = document.querySelector(".score");
 let timeDisplay = document.querySelector(".time");
-
+let shufflePos = false;
 
 function generateData() {
   const result = [];
@@ -21,7 +21,7 @@ function generateData() {
     name: null,
     el: null,
   });
-  return filds = result;
+  return (filds = result);
 }
 
 //рандомно розмішуєм
@@ -29,50 +29,45 @@ function shuffle(data) {
   data.sort(() => Math.random() - 0.5);
 }
 
-
 //расклад лойда - перевіряємо можливість складання
 function checkRightPosition(array) {
   let count;
   //вираховуємо позтцію вільної клітинки
-  
+
   array.forEach((item) => {
     if (item.name === null) {
       if (array.indexOf(item) >= 0 && array.indexOf(item) <= 3) {
         count = 1;
-      }
-      else if (array.indexOf(item) >= 4 && array.indexOf(item) <= 7) {
+      } else if (array.indexOf(item) >= 4 && array.indexOf(item) <= 7) {
         count = 2;
-      }
-      else if (array.indexOf(item) >= 8 && array.indexOf(item) <= 11) {
+      } else if (array.indexOf(item) >= 8 && array.indexOf(item) <= 11) {
         count = 3;
-      }
-      else if (array.indexOf(item) >= 12 && array.indexOf(item) <= 15) {
+      } else if (array.indexOf(item) >= 12 && array.indexOf(item) <= 15) {
         count = 4;
       }
     }
-    // console.log(count)
   });
 
   for (let indexSerch = 0; indexSerch < array.length; indexSerch++) {
     if (array[indexSerch].name !== null) {
       for (let i = indexSerch + 1; i < array.length; i++) {
         if (array[i].name !== null) {
-          array[indexSerch].name > array[i].name ? count++ : console.log()          
-         }
+          array[indexSerch].name > array[i].name ? count++ : console.log();
+        }
       }
     }
-    continue;    
+    continue;
   }
   if (Number.isInteger(count / 2) === false) {
     shuffle(array);
     checkRightPosition(array);
   } else {
+    shufflePos = true;
     return;
   }
 }
 
 function createBones(array) {
-  
   for (let index = 0; index < array.length; index++) {
     if (array[index].name) {
       let bone = document.createElement("div");
@@ -85,17 +80,16 @@ function createBones(array) {
       bone.setAttribute("index", index);
       array[index].el = bone;
       drawBones(bone, array);
-      
     }
   }
-  container.addEventListener("touchend", handleClick)
+  container.addEventListener("touchend", handleClick);
 }
 
 function handleClick(e) {
   const boneEl = e.target.closest(".index");
-    if (boneEl) {
-      const index = +boneEl.getAttribute("index");
-      move(index, filds);
+  if (boneEl) {
+    const index = +boneEl.getAttribute("index");
+    move(index, filds);
   }
 }
 
@@ -104,35 +98,61 @@ function drawBones(el) {
 }
 
 function move(currentIndex, array) {
-  if (firstMove === true) {
-    interval = setInterval(timeStart, 1000);
-    firstMove = false;
-  } else {
-  }
-  sound();
-  const bone = array[currentIndex];
-  let emptyIndex;
-  array.forEach((item, i) => {
-    if (item.name === null) {
-      emptyIndex = i;
+  // перевірка від неперемішування, кісти ворушаться але немає геймоверу і не запустився секундомір
+  if (shufflePos === true) {
+    if (firstMove === true) {
+      interval = setInterval(timeStart, 1000);
+      firstMove = false;
+    } else {
     }
-  });
-  const emptyBone = getEmptyBone(array, currentIndex);
+    sound();
+    const bone = array[currentIndex];
+    let emptyIndex;
+    array.forEach((item, i) => {
+      if (item.name === null) {
+        emptyIndex = i;
+      }
+    });
+    const emptyBone = getEmptyBone(array, currentIndex);
 
-  if (!emptyBone) {
-    return;
+    if (!emptyBone) {
+      return;
+    }
+    let oldEmptyBonePositionLeft = emptyIndex % 4;
+    let oldEmptyBonePositionTop = (emptyIndex - oldEmptyBonePositionLeft) / 4;
+
+    array[emptyIndex] = bone;
+    array[currentIndex] = emptyBone;
+
+    bone.el.style.left = `${oldEmptyBonePositionLeft * cellSize}px`;
+    bone.el.style.top = `${oldEmptyBonePositionTop * cellSize}px`;
+    bone.el.setAttribute("index", emptyIndex);
+    gameClick++;
+    gameOverPosition(array);
+  } else {
+    sound();
+    const bone = array[currentIndex];
+    let emptyIndex;
+    array.forEach((item, i) => {
+      if (item.name === null) {
+        emptyIndex = i;
+      }
+    });
+    const emptyBone = getEmptyBone(array, currentIndex);
+
+    if (!emptyBone) {
+      return;
+    }
+    let oldEmptyBonePositionLeft = emptyIndex % 4;
+    let oldEmptyBonePositionTop = (emptyIndex - oldEmptyBonePositionLeft) / 4;
+
+    array[emptyIndex] = bone;
+    array[currentIndex] = emptyBone;
+
+    bone.el.style.left = `${oldEmptyBonePositionLeft * cellSize}px`;
+    bone.el.style.top = `${oldEmptyBonePositionTop * cellSize}px`;
+    bone.el.setAttribute("index", emptyIndex);
   }
-  let oldEmptyBonePositionLeft = emptyIndex % 4;
-  let oldEmptyBonePositionTop = (emptyIndex - oldEmptyBonePositionLeft) / 4;
-
-  array[emptyIndex] = bone;
-  array[currentIndex] = emptyBone;
-
-  bone.el.style.left = `${oldEmptyBonePositionLeft * cellSize}px`;
-  bone.el.style.top = `${oldEmptyBonePositionTop * cellSize}px`;
-  bone.el.setAttribute("index", emptyIndex);
-  gameClick++;
-  gameOverPosition(array);
 }
 
 function getEmptyBone(array, currentIndex) {
@@ -159,7 +179,6 @@ function sound() {
   } else {
     numberSound = 2;
   }
-  console.log(numberSound);
   sound.innerHTML = `<audio src="audio/click${numberSound}.wav" class="audio"></audio>`;
   sound.volume = 0.2;
   sound.play();
