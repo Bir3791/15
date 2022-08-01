@@ -1,20 +1,20 @@
 body {
   font-family: "Orbitron", sans-serif;
   background-color: rgb(245, 247, 159);
-  animation: changes 5s infinite linear;
+  animation: changes 30s infinite linear;
   overflow: hidden;
   touch-action: none;
 }
 
 @keyframes changes {
   0% {
-    background-color: rgb(245, 247, 159);
+    background-color: rgb(35, 94, 244);
   }
   50% {
-    background-color: rgb(244, 247, 94);
+    background-color: rgb(208, 233, 48);
   }
   100% {
-    background-color: rgb(245, 247, 159);
+    background-color: rgb(35, 94, 244);
   }
 }
 
