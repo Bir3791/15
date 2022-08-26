@@ -3,7 +3,10 @@ const start = document.querySelector(".start");
 generateData();
 createBones(filds);
 
-start.addEventListener("touchend", function foo() {
+start.addEventListener("touchend", started);
+start.addEventListener("click", started);
+
+function started() {
   animate({
     duration: 500,
     timing(timeFraction) {
@@ -22,7 +25,7 @@ start.addEventListener("touchend", function foo() {
   checkRightPosition(filds);
   createBones(filds);
   firstMove = true;
-});
+}
 
 function gameOverPosition(data) {
   let countRight = 0;
@@ -88,3 +91,12 @@ function handleTouchMove(evt) {
   xDown = null;
   yDown = null;
 }
+
+const name = "123";
+
+const person = {
+  name: "333",
+  sayH: function () {
+    return "Hello ${this.name}!";
+  },
+};

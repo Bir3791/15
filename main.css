@@ -1,10 +1,13 @@
 body {
   font-family: "Orbitron", sans-serif;
   background-color: rgb(245, 247, 159);
-  animation: changes 30s infinite linear;
+  /* animation: changes 30s infinite linear;
   overflow: hidden;
-  touch-action: none;
+  touch-action: none; */
+  margin-top: -800px;
 }
+
+
 
 @keyframes changes {
   0% {
@@ -16,6 +19,18 @@ body {
   100% {
     background-color: rgb(35, 94, 244);
   }
+}
+
+@media screen and (max-width: 500px) {
+   body {
+  font-family: "Orbitron", sans-serif;
+  background-color: rgb(245, 247, 159);
+  animation: changes 30s infinite linear;
+  overflow: hidden;
+  touch-action: none;
+  margin-top: 0;
+}
+
 }
 
 .title-container {

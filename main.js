@@ -83,6 +83,7 @@ function createBones(array) {
     }
   }
   container.addEventListener("touchend", handleClick);
+  container.addEventListener("click", handleClick);
 }
 
 function handleClick(e) {
